@@ -1,0 +1,45 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Spustí se, když pushneš tag typu v1.2.3
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'  # Uprav podle verze .NET, kterou používáš
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build with version from tag
+      run: |
+        TAG_VERSION=${{ github.ref_name }}
+        VERSION=${TAG_VERSION#v}
+        dotnet build AproTools.csproj -c Release /p:Version=$VERSION
+
+    - name: Publish app
+      run: |
+        dotnet publish AproTools.csproj -c Release -o ./publish
+
+    - name: Zip output
+      run: |
+        powershell Compress-Archive -Path ./publish/* -DestinationPath ./AproTools.zip
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release ${{ github.ref_name }}
+        tag_name: ${{ github.ref_name }}
+        files: ./AproTools.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
