@@ -20,7 +20,8 @@ namespace AproTools.ViewModels
         [ObservableProperty]
         private ListItemTemplate? _selectedListItem;
 
-        partial void OnSelectedListItemChanged(ListItemTemplate? value)
+
+    partial void OnSelectedListItemChanged(ListItemTemplate? value)
         {
             if (value is null) return;
             var instance = Activator.CreateInstance(value.ModelType);

@@ -10,6 +10,11 @@ namespace AproTools.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Opened += async (_, _) =>
+            {
+                await Updater.CheckForUpdateAsync();
+            };
         }
 
         private void ThemeToggle_Checked(object? sender, RoutedEventArgs e)

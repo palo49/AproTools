@@ -23,7 +23,7 @@ namespace AproTools
         public static async Task CheckForUpdateAsync()
         {
             using var http = new HttpClient();
-            http.DefaultRequestHeaders.UserAgent.ParseAdd("MyAppUpdater");
+            http.DefaultRequestHeaders.UserAgent.ParseAdd("AproToolsUpdater");
 
             try
             {
