@@ -1,0 +1,83 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AproTools.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+        x:Class="AproTools.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/AproTools-logo.ico"
+        Title="AproTools - Automation Programing Tools"
+		MinHeight="600"
+		MinWidth="1200"
+		Height="600"
+		Width="1200"
+		WindowStartupLocation="CenterScreen">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<SplitView IsPaneOpen="{Binding IsPaneOpen}"
+			   OpenPaneLength="300"
+			   CompactPaneLength="52"
+			   DisplayMode="CompactInline"
+			   Background="{DynamicResource bgLeftMenu}"
+			   >
+		<SplitView.Pane>
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"></RowDefinition>
+					<RowDefinition Height="60"></RowDefinition>
+				</Grid.RowDefinitions>
+
+				<StackPanel Spacing="5"
+						Margin="5"
+						Grid.Row="0">
+					<Button Padding="10" Command="{Binding TriggerPaneCommand}">
+						<PathIcon Data="{StaticResource LineHorizontal3Regular}"></PathIcon>
+					</Button>
+					<ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedListItem}">
+						<ListBox.ItemTemplate>
+							<DataTemplate DataType="{x:Type vm:ListItemTemplate}">
+								<StackPanel Spacing="15" Orientation="Horizontal">
+									<PathIcon Data="{Binding ListItemIcon}"></PathIcon>
+									<TextBlock Text="{Binding Label}"></TextBlock>
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+					
+				</StackPanel>
+
+				<Panel Width="300"
+					   Height="60"
+					   Grid.Row="1">
+
+					<ToggleSwitch x:Name="ThemeToggle"
+								  OffContent="Světlý"
+								  OnContent="Tmavý"
+								  IsChecked="True"
+								  Checked="ThemeToggle_Checked"
+								  Unchecked="ThemeToggle_Unchecked"
+								  Grid.Row="1"
+								  HorizontalAlignment="Right"
+								  Margin="0 0 20 0"
+								  FlowDirection="LeftToRight"/>
+
+				</Panel>
+				
+
+			</Grid>
+			
+		</SplitView.Pane>
+		<SplitView.Content>
+			<Border CornerRadius="12 0 0 0"
+					Background="{DynamicResource bgBox}">
+				<TransitioningContentControl Content="{Binding CurrentPage}"></TransitioningContentControl>
+			</Border>
+		</SplitView.Content>
+	</SplitView>
+</Window>
