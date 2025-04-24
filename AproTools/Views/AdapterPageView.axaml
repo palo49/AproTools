@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="600"
              x:Class="AproTools.Views.AdapterPageView">
 	<Grid>
 		<Grid.ColumnDefinitions>
@@ -14,16 +14,8 @@
 
 		<StackPanel Spacing="10" Margin="10 20" Grid.Column="0" Grid.ColumnSpan="3">
 			<TextBlock>Network adapters</TextBlock>
-			<ComboBox SelectedIndex="-1" MaxDropDownHeight="400" Width="300">
-				<ComboBoxItem>Text Item 1</ComboBoxItem>
-				<ComboBoxItem>Text Item 2</ComboBoxItem>
-				<ComboBoxItem>Text Item 3</ComboBoxItem>
-				<ComboBoxItem>Text Item 4</ComboBoxItem>
-				<ComboBoxItem>Text Item 5</ComboBoxItem>
-				<ComboBoxItem>Text Item 6</ComboBoxItem>
-				<ComboBoxItem>Text Item 7</ComboBoxItem>
-				<ComboBoxItem>Text Item 8</ComboBoxItem>
-				<ComboBoxItem>Text Item 9</ComboBoxItem>
+			<ComboBox SelectedIndex="-1" MaxDropDownHeight="400" Width="300" x:Name="cmbAdapters" SelectionChanged="ComboBox_SelectionChanged">
+				
 			</ComboBox>
 			<TextBlock Margin="0 10 0 0">Actual values</TextBlock>
 			<Grid Grid.Column="0">
@@ -38,11 +30,11 @@
 				</Grid.RowDefinitions>
 
 				<TextBlock Grid.Column="0" Grid.Row="0">IPv4:</TextBlock>
-				<TextBlock Grid.Column="1" Grid.Row="0">xxx.xxx.xxx.xxx</TextBlock>
+				<TextBlock Grid.Column="1" Grid.Row="0" x:Name="txtIPv4">xxx.xxx.xxx.xxx</TextBlock>
 				<TextBlock Grid.Column="0" Grid.Row="1">Subnet:</TextBlock>
-				<TextBlock Grid.Column="1" Grid.Row="1">xxx.xxx.xxx.xxx</TextBlock>
+				<TextBlock Grid.Column="1" Grid.Row="1" x:Name="txtSubnet">xxx.xxx.xxx.xxx</TextBlock>
 				<TextBlock Grid.Column="0" Grid.Row="2">Gateway:</TextBlock>
-				<TextBlock Grid.Column="1" Grid.Row="2">xxx.xxx.xxx.xxx</TextBlock>
+				<TextBlock Grid.Column="1" Grid.Row="2" x:Name="txtGateway">xxx.xxx.xxx.xxx</TextBlock>
 			</Grid>
 
 			<TextBlock Margin="0 10 0 0">Change values to</TextBlock>
@@ -58,11 +50,11 @@
 				</Grid.RowDefinitions>
 
 				<TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">IPv4:</TextBlock>
-				<TextBox Grid.Column="1" Grid.Row="0" Height="30"></TextBox>
+				<TextBox x:Name="txtboxIPv4" Grid.Column="1" Grid.Row="0" Height="30"></TextBox>
 				<TextBlock Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">Subnet:</TextBlock>
-				<TextBox Grid.Column="1" Grid.Row="1" Height="30"></TextBox>
+				<TextBox x:Name="txtboxSubnet" Grid.Column="1" Grid.Row="1" Height="30"></TextBox>
 				<TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Gateway:</TextBlock>
-				<TextBox Grid.Column="1" Grid.Row="2" Height="30"></TextBox>
+				<TextBox x:Name="txtboxGateway" Grid.Column="1" Grid.Row="2" Height="30"></TextBox>
 			</Grid>
 
 			<TextBlock>Remote status: xxx.xxx.xxx.xxx</TextBlock>

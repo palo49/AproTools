@@ -22,5 +22,53 @@ namespace AproTools {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string Adapter_SelectedIndex {
+            get {
+                return ((string)(this["Adapter_SelectedIndex"]));
+            }
+            set {
+                this["Adapter_SelectedIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Adapter_IPv4 {
+            get {
+                return ((string)(this["Adapter_IPv4"]));
+            }
+            set {
+                this["Adapter_IPv4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Adapter_Subnet {
+            get {
+                return ((string)(this["Adapter_Subnet"]));
+            }
+            set {
+                this["Adapter_Subnet"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Adapter_Gateway {
+            get {
+                return ((string)(this["Adapter_Gateway"]));
+            }
+            set {
+                this["Adapter_Gateway"] = value;
+            }
+        }
     }
 }

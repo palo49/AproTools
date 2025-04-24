@@ -8,5 +8,8 @@ namespace AproTools.ViewModels
 {
     public class AdapterPageViewModel : ViewModelBase
     {
+
+
+
     }
 }

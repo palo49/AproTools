@@ -52,7 +52,8 @@ public partial class HomePageView : UserControl, INotifyPropertyChanged
             Updater.Logger = Log;
 
             await Log("Kontroluji dostupnost nové verze...");
-            var (isAvailable, latest) = await Updater.IsUpdateAvailableAsync();
+
+            var (isAvailable, latest) = await Updater.CheckForUpdateInfoAsync(Log, force: false);
 
             if (isAvailable)
             {
@@ -61,14 +62,6 @@ public partial class HomePageView : UserControl, INotifyPropertyChanged
             }
             else
             {
-                if (latest == null)
-                {
-                    await Log("❗ Limit GitHub API vyčerpán – zkus to později nebo přidej token.");
-                }
-                else
-                {
-                    await Log("Vše šlape jako po másle – používáš nejnovější verzi." + latest);
-                }
                 UpdateButton.IsEnabled = false;
             }
         };
