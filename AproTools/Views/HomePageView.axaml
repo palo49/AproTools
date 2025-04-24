@@ -3,20 +3,111 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AproTools.Views.HomePageView">
+             x:Class="AproTools.Views.HomePageView"
+			 x:DataType="local:HomePageView"
+			 xmlns:local="clr-namespace:AproTools.Views">
 
 	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*"></ColumnDefinition>
-			<ColumnDefinition Width="2*"></ColumnDefinition>
-			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="1*"></ColumnDefinition>
+			<ColumnDefinition Width="1*"></ColumnDefinition>
+			<ColumnDefinition Width="1*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="100"></RowDefinition>
+			<RowDefinition Height="1*"></RowDefinition>
+			<RowDefinition Height="1*"></RowDefinition>
 			<RowDefinition Height="2*"></RowDefinition>
-			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
 
-		<Image Grid.Column="1" Grid.Row="1" Source="avares://AproTools/Assets/AproTools-logo.png"></Image>
+		<Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="100"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="250"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+
+			<Image Grid.Column="0"
+				   Grid.Row="1"
+				   Width="50"
+				   HorizontalAlignment="Center"
+				   VerticalAlignment="Center"
+				   Source="avares://AproTools/Assets/AproTools-logo.png"/>
+
+			<TextBlock Text="{CompiledBinding CurrentTime}"
+					   FontSize="48"
+					   FontFamily="{StaticResource DigitalFont}"
+					   HorizontalAlignment="Right"
+					   VerticalAlignment="Center"
+					   Margin="0 0 20 0"
+					   Grid.Column="2"
+					   Foreground="{DynamicResource ClockGradient}">
+
+
+
+			</TextBlock>
+					   
+
+		</Grid>
+
+		<StackPanel Grid.Column="0" Grid.ColumnSpan="3"
+					Grid.Row="3"
+					VerticalAlignment="Bottom"
+					Margin="20" Spacing="12">
+			
+			<TextBlock Text="Aktualizační konzole" FontSize="13" FontWeight="Bold"/>
+
+			<TextBox x:Name="LogBox"
+						 AcceptsReturn="True"
+						 IsReadOnly="True"
+						 TextWrapping="Wrap"
+						 FontFamily="Consolas"
+						 BorderBrush="Gray"
+						 BorderThickness="1"
+						 Padding="8"
+						 FontSize="13"
+					     Height="60"/>
+
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="150"></ColumnDefinition>
+					<ColumnDefinition Width="200"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+					<ColumnDefinition Width="100"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+
+				<Button x:Name="UpdateButton"
+					Content="Spustit aktualizaci"
+					IsEnabled="False"
+					Cursor="Hand"
+					HorizontalAlignment="Left"
+						Grid.Column="0"/>
+
+				<Button Content="Zkontrolovat aktualizaci"
+						Click="ManualUpdateCheck_Click"
+						Cursor="Hand"
+						HorizontalAlignment="Left"
+						Grid.Column="1"/>
+
+				<ProgressBar x:Name="UpdateProgress"
+                 Height="18"
+				 Width="300"
+				 HorizontalAlignment="Center"
+				 VerticalAlignment="Center"
+                 Minimum="0"
+                 Maximum="100"
+                 Value="0"
+                 IsVisible="False"
+				 Grid.Column="2"/>
+
+				<TextBlock x:Name="versionTxt"
+				   Grid.Column="3"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Right">vx.x.x</TextBlock>
+
+			</Grid>
+			
+
+		</StackPanel>
 	</Grid>
 </UserControl>

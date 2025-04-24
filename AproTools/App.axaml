@@ -20,6 +20,7 @@
 				<MergeResourceInclude Source="/Assets/Styles.axaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
+		<FontFamily x:Key="DigitalFont">avares://AproTools/Assets/Fonts/digital-7.ttf#digital-7</FontFamily>
 	</Application.Resources>
 
 </Application>

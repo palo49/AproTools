@@ -6,10 +6,26 @@
 		<ResourceDictionary x:Key='Light'>
 			<SolidColorBrush x:Key='bgBox'>#ffffff</SolidColorBrush>
 			<SolidColorBrush x:Key='bgLeftMenu'>#f2f2f2</SolidColorBrush>
+
+			<LinearGradientBrush x:Key="ClockGradient" StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Color="#E6F9E6" Offset="0.0"/> <!-- Světle zelená -->
+				<GradientStop Color="#C7F2C7" Offset="0.25"/> <!-- Jemná zelená -->
+				<GradientStop Color="#A0D8A0" Offset="0.5"/> <!-- Světlejší zelená -->
+				<GradientStop Color="#7CB57C" Offset="0.75"/> <!-- Zelená s nádechem šedé -->
+				<GradientStop Color="#4F9F4F" Offset="1.0"/> <!-- Tmavší zelená -->
+			</LinearGradientBrush>
 		</ResourceDictionary>
 		<ResourceDictionary x:Key='Dark'>
 			<SolidColorBrush x:Key='bgBox'>#2d2d2d</SolidColorBrush>
 			<SolidColorBrush x:Key='bgLeftMenu'>#171717</SolidColorBrush>
+
+			<LinearGradientBrush x:Key="ClockGradient" StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Color="#303f56" Offset="0.0"/>
+				<GradientStop Color="#404a6b" Offset="0.25"/>
+				<GradientStop Color="#5a6e85" Offset="0.5"/>
+				<GradientStop Color="#7a8f9d" Offset="0.75"/>
+				<GradientStop Color="#6d7a94" Offset="1.0"/>
+			</LinearGradientBrush>
 		</ResourceDictionary>
 		
 	</ResourceDictionary.ThemeDictionaries>
